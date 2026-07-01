@@ -1,0 +1,40 @@
+import pyautogui
+import time
+print("=== Desktop Automation Bot ===")
+while True:
+    print("\n1. Move Mouse")
+    print("2. Mouse Click")
+    print("3. Type Text")
+    print("4. Press Enter")
+    print("5. Take Screenshot")
+    print("6. Exit")
+    choice = input("Enter your choice: ")
+    try:
+        if choice == "1":
+            x = int(input("Enter X position: "))
+            y = int(input("Enter Y position: "))
+            pyautogui.moveTo(x, y, duration=1)
+            print("Mouse moved successfully!")
+        elif choice == "2":
+            pyautogui.click()
+            print("Mouse clicked!")
+        elif choice == "3":
+            text = input("Enter text to type: ")
+            pyautogui.write(text, interval=0.05)
+            print("Text typed successfully!")
+        elif choice == "4":
+            pyautogui.press("enter")
+            print("Enter key pressed!")
+        elif choice == "5":
+            filename = input("Enter screenshot file name: ")
+            screenshot = pyautogui.screenshot()
+            screenshot.save(filename + ".png")
+            print("Screenshot saved successfully!")
+        elif choice == "6":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Try again.")
+        time.sleep(1)
+    except Exception as e:
+        print("Error:", e)
